@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const db = require('../rhbhackathon-api/public/javascripts/db')
+
 var app = express();
 
 // view engine setup
@@ -37,5 +39,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+db.connect()
+  .then(item =>{
+    app.listen(2001, () => console.log(`Listening on port 2001`))
+  })
 
 module.exports = app;
