@@ -8,6 +8,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'User' });
 });
 
-router.get('/add', userController.addUser)
+router.post('/add', userController.addUser)
 
 module.exports = router;
