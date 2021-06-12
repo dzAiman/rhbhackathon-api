@@ -37,5 +37,9 @@ async function addContract (req, res){
     })
 }
 
+async function editContract(req, res){
+    
+}
+
 module.exports.getContract = getContract
 module.exports.addContract = addContract
