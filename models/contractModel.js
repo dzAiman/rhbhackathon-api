@@ -26,6 +26,13 @@ const schema = mongoose.Schema({
 		type: String,
 		default: ''
 	},
+	applicationDeadline: {
+		type: String,
+		default: ''
+	},
+	category: {
+		type: String,
+	}
 })
 
 module.exports = mongoose.model('Contract', schema)

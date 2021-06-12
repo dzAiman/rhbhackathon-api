@@ -2,10 +2,14 @@ const User = require('../models/userModel')
 
 async function addUser(req, res) {
 
-    const { username, email } = req.body
+    const { firstName, lastName, email, workingStatus, yearsOfExperiece, qualification } = req.body
     const user = new User()
-    user.username = username
+    user.firstName = firstName
+    user.lastName = lastName
     user.email = email
+    user.workingStatus = workingStatus
+    user.yearsOfExperiece = yearsOfExperiece
+    user.qualification = qualification
 
     try{
         user.save()
@@ -13,10 +17,7 @@ async function addUser(req, res) {
     catch(e){
         console.log(e)
     }
-    return res.json({
-        username: user.username,
-        email: user.email
-    })
+    return res.json(user)
 }
 
 module.exports.addUser = addUser

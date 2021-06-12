@@ -11,8 +11,12 @@ mongoose
  .catch(err => console.log(err));
 
 const user = new User({
-    username: "Ahmad",
-    email: "ahmad@gmail.com"
+    firstName: "Ahmad",
+    lastName: "Ahmad",
+    email: "ahmad@gmail.com",
+    workingStatus: false,
+    yearsOfExperiece: 2,
+    qualification: "UI/UX designer who is interested in data science. Certified from local coding bootcamp. Kaggle account: https://www.kaggle.com/user/ahmadahmad",
 })
 
 const contractInit = [{
@@ -21,14 +25,18 @@ const contractInit = [{
     expRequired: "Beginner",
     teamNumber: "1",
     reward: "RM 100",
-    contractManager: "Farhan SJ"
+    contractManager: "Farhan SJ",
+    category: "Data Science",
+    applicationDeadline: "14/6/2021"
 },{
     title: "Automate report generation",
     description: "We have a manual task that we need to do everyday and have it reported.",
     expRequired: "Intermediatte",
     teamNumber: "2",
     reward: "RM 300",
-    contractManager: "Farhan SJ" 
+    contractManager: "Farhan SJ",
+    category: "Data Science",
+    applicationDeadline: "16/6/2021"
 }]
 
 user.save()
