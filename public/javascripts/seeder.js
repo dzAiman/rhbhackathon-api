@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Contract = require('../../models/contractModel')
 const User = require('../../models/userModel')
+const Buletin = require('../../models/buletinModel')
 
 mongoose 
  .connect('mongodb://localhost:27017/rhbhackathon', {
@@ -39,15 +40,36 @@ const contractInit = [{
     applicationDeadline: "16/6/2021"
 }]
 
-user.save()
+const buletinInit = [{
+    title: "Setting up Docker",
+    description: "We are looking to containerise our application",
+    manager: "Mr Farhan",
+    createdDate: "14/6/2021",
+    department: "Devops"
+}, {
+    title: "UI/UX specialist vacancy",
+    description: "Expanding our team, come join us!",
+    manager: "Mr Shah",
+    createdDate: "11/6/2021",
+    department: "Digital"
+}]
+
+user.save({upsert: true})
     .then((data)=>{
     console.log('User seed created')
 })
 
 for(const contractData of contractInit ){
     const contract = new Contract(contractData)
-    contract.save()
+    contract.save({upsert: true})
         .then((data)=>{
         console.log('Contract seed generated')
     })
+for (const buletinData of buletinInit){
+    const buletin = new Buletin(buletinData)
+    buletin.save({upsert: true})
+        .then((data) =>{
+            console.log('Buletin data generated')
+        })
+}
 }
